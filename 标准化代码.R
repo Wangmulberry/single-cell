@@ -1,3 +1,6 @@
+#本部分代码由洪滢心编写
+#该部分为R代码
+
 library(dplyr)
 library(Seurat)
 library(patchwork)data <- read.csv("C:\\Users\\Lenovo\\Desktop\\cell.csv")  #原始数据
