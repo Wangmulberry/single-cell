@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
+# 本部分代码由廖媛媛编写
+# 总共聚类5次，本部分展示每次聚类所用代码
 
-# # 导入标准化数据
-
-# In[348]:
-
-
+# 导入标准化数据
 import pandas as pd
 d1 = pd.read_csv('D:\\A-czy&lyy\\大数据案例分析\\标准化20-1.csv')
 d1.head(6)
