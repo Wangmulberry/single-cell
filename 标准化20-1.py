@@ -7,40 +7,21 @@
 import pandas as pd
 d1 = pd.read_csv('D:\\A-czy&lyy\\大数据案例分析\\标准化20-1.csv')
 d1.head(6)
-
-
-# In[349]:
-
-
 d1 = d1.drop(['genes'],axis=1)#去除第一列
 
 
 # # 主成分降维
-
-# In[350]:
-
-
 from sklearn.decomposition import PCA
 import numpy as np 
 pca = PCA(n_components=50)   
 pca.fit(d1.T)                  
 x1=pca.fit_transform(d1.T) 
-
-
-# In[352]:
-
-
 #降维后的结果保存为数据框格式
 x1_1=pd.DataFrame(x1)
 #将数据转换为数组形式
 x1_3=np.array(x1_1)
 
-
 # # K-means聚类
-
-# In[355]:
-
-
 #各种距离定义以及k-means聚类定义
 from numpy import *
 XT=x1_3.T
@@ -241,10 +222,7 @@ if __name__ == '__main__':
         print("轮廓系数为：%s" % str(s_sum))
         print('***' * 20)
 
-
-# In[ ]:
-
-
+        
 #马氏距离轮廓系数法
 def distCal(vector1, vector2):
     return sqrt(sum(power(vector1-vector2, 2))) 
@@ -299,9 +277,6 @@ if __name__ == '__main__':
         print("当前k的值为：%d" % k)
         print("轮廓系数为：%s" % str(s_sum))
         print('***' * 20)
-
-
-# In[208]:
 
 
 #余弦距离轮廓系数法
@@ -359,10 +334,7 @@ if __name__ == '__main__':
         print("轮廓系数为：%s" % str(s_sum))
         print('***' * 20)
 
-
-# In[209]:
-
-
+        
 #k值确定后的三种聚类的轮廓系数
 if __name__ == '__main__':
     data = x1_3
@@ -499,15 +471,8 @@ if __name__ == '__main__':
 #马氏距离聚类
 myCentroids_m, clusterAssing_m = k_means_m(x1_3,2)
 
-
-# In[357]:
-
-
 #聚类类别
 c_m=array(clusterAssing_m)[:, 0].T
-
-
-# In[358]:
 
 
 #可视化
@@ -521,24 +486,13 @@ plt.legend()
 plt.show()
 
 
-# In[359]:
-
-
 class_final= pd.DataFrame(clusterAssing_m)
 new_col=['class','dis']
 class_final.columns=new_col
 class_final
 
-
-# In[360]:
-
-
 d3=d1.T
 d3.head(6)
-
-
-# In[362]:
-
 
 #癌细胞正确聚类的个数
 t=0
@@ -546,10 +500,6 @@ for i in range(2622,2642):
     if class_final['class'][i]==1.0:
         t=t+1
 t
-
-
-# In[363]:
-
 
 #与癌细胞聚为一类的个数
 t1=0
@@ -560,17 +510,6 @@ for i in range(len(class_final['class'])):
         a.append(d3.index[i])
 t1
 
-
-# In[366]:
-
-
 #保存数据
 a1=pd.DataFrame(a)
 a1.to_csv("D:\\A-czy&lyy\\大数据案例分析\\终结版1.csv",index=False,sep=',')
-
-
-# In[ ]:
-
-
-
-
